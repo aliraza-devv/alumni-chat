@@ -4,7 +4,9 @@ import Cookies from 'universal-cookie';
 
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
 import AlumniIcon from '../assets/University.png';
-import LogoutIcon from '../assets/logout.png'
+import LogoutIcon from '../assets/logout.png';
+
+const cookies = new Cookies();
 
 const SideBar = ({ logout }) => (
   <div className="channel-list__sidebar">
@@ -28,9 +30,24 @@ const CompanyHeader = () => (
 )
 
 const ChannelListContainer = () => {
+  const logout = () => {
+    cookies.remove("token");
+    cookies.remove('userId');
+    cookies.remove('username');
+    cookies.remove('fullName');
+    cookies.remove('avatarURL');
+    cookies.remove('hashedPassword');
+    cookies.remove('phoneNumber');
+    cookies.remove("skills");
+    cookies.remove("bloodGroup");
+    cookies.remove("experience");
+
+    window.location.reload()
+  }
+
   return (
     <>
-      <SideBar />
+      <SideBar logout={logout} />
       <div className='channel-list__list__wrapper'>
         <CompanyHeader />
         <ChannelSearch />
