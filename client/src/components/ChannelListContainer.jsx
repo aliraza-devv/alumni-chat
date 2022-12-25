@@ -1,92 +1,78 @@
-import React, { useState } from 'react';
-import { ChannelList, useChatContext } from 'stream-chat-react';
-import Cookies from 'universal-cookie';
+import React, { useState } from "react";
+import { ChannelList, useChatContext } from "stream-chat-react";
+import Cookies from "universal-cookie";
 
-import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
-import AlumniIcon from '../assets/University.png';
-import LogoutIcon from '../assets/logout.png';
+import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
+import AlumniIcon from "../assets/University.png";
+import LogoutIcon from "../assets/logout.png";
 
 const cookies = new Cookies();
 
 const SideBar = ({ logout }) => (
   <div className="channel-list__sidebar">
-      <div className="channel-list__sidebar__icon1">
-          <div className="icon1__inner">
-              <img src={AlumniIcon} alt="Alumni" width="30" />
-          </div>
+    <div className="channel-list__sidebar__icon1">
+      <div className="icon1__inner">
+        <img src={AlumniIcon} alt="Alumni" width="30" />
       </div>
-      <div className="channel-list__sidebar__icon2">
-            <div className="icon1__inner" onClick={logout}>
-                <img src={LogoutIcon} alt="Logout" width="30" />
-            </div>
-        </div>
+    </div>
+    <div className="channel-list__sidebar__icon2">
+      <div className="icon1__inner" onClick={logout}>
+        <img src={LogoutIcon} alt="Logout" width="30" />
+      </div>
+    </div>
   </div>
 );
 
 const CompanyHeader = () => (
   <div className="channel-list__header">
-      <p className="channel-list__header__text">Alumni Pager</p>
+    <p className="channel-list__header__text">Alumni Pager</p>
   </div>
-)
+);
 
-const ChannelListContainer = () => {
+const ChannelListContainer = ({ isCreating, setIsCreating, setCreateType, setIsEditing }) => {
   const logout = () => {
     cookies.remove("token");
-    cookies.remove('userId');
-    cookies.remove('username');
-    cookies.remove('fullName');
-    cookies.remove('avatarURL');
-    cookies.remove('hashedPassword');
-    cookies.remove('phoneNumber');
+    cookies.remove("userId");
+    cookies.remove("username");
+    cookies.remove("fullName");
+    cookies.remove("avatarURL");
+    cookies.remove("hashedPassword");
+    cookies.remove("phoneNumber");
     cookies.remove("skills");
     cookies.remove("bloodGroup");
     cookies.remove("experience");
 
-    window.location.reload()
-  }
+    window.location.reload();
+  };
 
   return (
     <>
       <SideBar logout={logout} />
-      <div className='channel-list__list__wrapper'>
+      <div className="channel-list__list__wrapper">
         <CompanyHeader />
         <ChannelSearch />
-        <ChannelList 
+        <ChannelList
           filters={{}}
           channelRenderFilterFn={() => {}}
-          List={(listProps) => {
-            <TeamChannelList 
-              {...listProps}
-              type="team"
-            />
-          }}
+          List={(listProps) => <TeamChannelList {...listProps} type="team" />}
           Preview={(previewProps) => (
-            <TeamChannelPreview
-              {...previewProps}
-              type="team"
-            />
+            <TeamChannelPreview {...previewProps} type="team" />
           )}
         />
-        
-        <ChannelList 
+
+        <ChannelList
           filters={{}}
           channelRenderFilterFn={() => {}}
-          List={(listProps) => {
-            <TeamChannelList 
-              {...listProps}
-              type="messaging"
-            />
-          }}
+          List={(listProps) => (
+            <TeamChannelList {...listProps} type="messaging" />
+          )}
           Preview={(previewProps) => (
-            <TeamChannelPreview
-              {...previewProps}
-              type="messaging"
-            />
+            <TeamChannelPreview {...previewProps} type="messaging" />
           )}
         />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ChannelListContainer
+export default ChannelListContainer;
