@@ -34,14 +34,24 @@ const Auth = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { fullName, username, password, phoneNumber, avatarURL, skills, bloodGroup, experience } = form;
+    const {
+      username,
+      password,
+      phoneNumber,
+      avatarURL,
+      skills,
+      bloodGroup,
+      experience,
+    } = form;
 
     const URL = "http://localhost:5000/auth";
 
-    const { data: { token, userId, hashedPassword} } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
+    const {
+      data: { token, userId, hashedPassword, fullName, },
+    } = await axios.post(`${URL}/${isSignup ? "signup" : "login"}`, {
       username,
       password,
-      fullName,
+      fullName: form.fullName,
       phoneNumber,
       avatarURL,
       skills,
@@ -57,9 +67,9 @@ const Auth = () => {
       cookies.set("phoneNumber", phoneNumber);
       cookies.set("avatarURL", avatarURL);
       cookies.set("hashedPassword", hashedPassword);
-      // cookies.set("skills", skills);
-      // cookies.set("bloodGroup", bloodGroup);
-      // cookies.set("experience", experience);
+      cookies.set("skills", skills);
+      cookies.set("bloodGroup", bloodGroup);
+      cookies.set("experience", experience);
     }
     window.location.reload();
   };
@@ -120,7 +130,7 @@ const Auth = () => {
 
             {isSignup && (
               <div className="auth__form-container_fields-content_input">
-                <label htmlFor="avatarURL">Experience</label>
+                <label htmlFor="experience">Experience</label>
                 <input
                   name="experience"
                   type="number"
@@ -132,7 +142,7 @@ const Auth = () => {
             )}
             {isSignup && (
               <div className="auth__form-container_fields-content_input">
-                <label htmlFor="avatarURL">Skills</label>
+                <label htmlFor="skills">Skills</label>
                 <input
                   name="skills"
                   type="text"
@@ -144,7 +154,7 @@ const Auth = () => {
             )}
             {isSignup && (
               <div className="auth__form-container_fields-content_input">
-                <label htmlFor="avatarURL">Blood Group</label>
+                <label htmlFor="bloodGroup">Blood Group</label>
                 <input
                   name="bloodGroup"
                   type="text"
