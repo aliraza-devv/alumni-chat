@@ -45,6 +45,7 @@ const Auth = () => {
     } = form;
 
     const URL = "http://localhost:5000/auth";
+    // const URL2 = "/auth";
 
     const {
       data: { token, userId, hashedPassword, fullName, },
