@@ -32,7 +32,8 @@ app.post('/', (req, res) => {
                 twilioClient.messages.create({
                     body: `You have a new message from ${message.user.fullName} - ${message.text}`,
                     messagingServiceSid: messagingServiceSid,
-                    to: user.phoneNumber
+                    to: user.phoneNumber,
+                    from: '+12059533634'
                 })
                     .then(() => console.log('Message sent.'))
                     .catch(err => console.log(err))
