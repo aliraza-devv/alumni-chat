@@ -44,7 +44,7 @@ const Auth = () => {
       experience,
     } = form;
 
-    const URL = "http://localhost:5000/auth";
+    const URL = "https://long-lime-pea-coat.cyclic.app//auth";
     // const URL2 = "/auth";
 
     const {
