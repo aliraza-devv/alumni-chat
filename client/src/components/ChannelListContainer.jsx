@@ -148,7 +148,7 @@ const ChannelListContainer = ({
         }}
       >
         <div
-          className="channel-list__container-toggle"
+          className="channerl-list__container-toggle"
           onClick={() =>
             setToggleContainer((prevToggleContainer) => !prevToggleContainer)
           }
