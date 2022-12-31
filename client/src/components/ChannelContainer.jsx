@@ -2,6 +2,7 @@ import React from "react";
 import { Channel, useChatContext, MessageSimple } from "stream-chat-react";
 
 import { ChannelInner, CreateChannel, EditChannel } from "./";
+import EmptyAim from '../assets/Hidden-person2.gif'
 
 const ChannelContainer = ({
   isCreating,
@@ -30,6 +31,7 @@ const ChannelContainer = ({
 
   const EmptyState = () => (
     <div className="channel-empty__container">
+      <img className="channel-empty__illustration" src={EmptyAim} alt='Animation' width={300} height={300} />
       <p className="channel-empty__first">
         This is the beginning of your chat history.
       </p>

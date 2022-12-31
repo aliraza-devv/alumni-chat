@@ -192,9 +192,7 @@ body {
 .app__wrapper {
   display: flex;
   flex: 1;
-  /* height: 800px; */
   height: 100%;
-  /* border-radius: 16px; */
   box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 4px 0px;
 }
 
@@ -245,6 +243,10 @@ body {
   margin-left: 20px;
   margin-right: 20px;
   padding-bottom: 20px;
+}
+
+.channel-empty__illustration {
+  margin-left: 18rem;
 }
 
 .channel-empty__avatars {
@@ -1743,6 +1745,10 @@ div.rta__autocomplete.str-chat__emojisearch {
     display: none;
   }
 
+  .channel-empty__illustration {
+    margin-left: 10rem;
+  }
+
   .team-channerl-header_menu-icon {
     display: flex;
   }
@@ -1809,6 +1815,9 @@ div.rta__autocomplete.str-chat__emojisearch {
   .channerl-list__container-toggle {
     right: -3%;
   }
+  .channel-empty__illustration {
+    margin-left: 5rem;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -1819,10 +1828,18 @@ div.rta__autocomplete.str-chat__emojisearch {
   .channerl-list__container-toggle {
     right: -5%;
   }
+  .channel-empty__illustration {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: 320px) {
   .channel-list__sidebar {
     display: none;
+  }
+
+  .channel-empty__illustration {
+    height: 200px;
+    width: 200px;
   }
 }
