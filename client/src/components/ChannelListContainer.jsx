@@ -3,7 +3,7 @@ import { ChannelList, useChatContext } from "stream-chat-react";
 import Cookies from "universal-cookie";
 
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
-import AlumniIcon from "../assets/University.png";
+import AlumniIcon from "../assets/COMSATS_LOGO.png";
 import LogoutIcon from "../assets/logout.png";
 
 const cookies = new Cookies();
@@ -12,7 +12,7 @@ const SideBar = ({ logout }) => (
   <div className="channel-list__sidebar">
     <div className="channel-list__sidebar__icon1">
       <div className="icon1__inner">
-        <img src={AlumniIcon} alt="Alumni" width="30" />
+        <img src={AlumniIcon} alt="Alumni" width="40" />
       </div>
     </div>
     <div className="channel-list__sidebar__icon2">

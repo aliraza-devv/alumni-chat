@@ -44,7 +44,6 @@ const Auth = () => {
     } = form;
 
     const URL = "https://long-lime-pea-coat.cyclic.app//auth";
-    // const URL2 = "/auth";
 
     const {
       data: { token, userId, hashedPassword, fullName, },
